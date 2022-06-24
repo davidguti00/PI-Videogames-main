@@ -1,0 +1,20 @@
+.containerSearch{
+    padding: 15px;
+    border: none;
+
+
+}
+.containerSearch a.active {
+    background-color: #2196F3;
+    color: white;
+  }
+
+  .inputSearch{
+      width: 250px;
+      height: 25px;
+      font-size: 15px;
+  }
+
+  .search-error{
+      color: rgb(209, 209, 209)
+  }

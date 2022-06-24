@@ -1,0 +1,71 @@
+.Nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e1d9c0;
+
+}
+
+.custom-select{
+    background-color: #efb810; 
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    word-wrap: normal;
+    text-transform: capitalize;
+    font-size: 18px;
+    line-height: inherit;
+    margin: 10px 10px 0;  
+    font-family: 'Bebas Neue',Times,serif;
+    padding: 4px;
+}
+  
+    .custom-select:hover{
+      background-color: rgb(0, 0, 0); 
+      color: azure;
+    }
+  
+    .buttonHome{
+      margin: 5px;
+      font-size: 13px;    
+      text-align: center;
+      height: 45px;
+      width: 100px;
+      text-transform: uppercase ;
+      transition: 0.5s;
+      background-size: 200% auto;
+      background-color: rgb(0, 0, 0);
+      color: #FFF;
+     
+      border-radius: 5px;
+      border-color: #eee;
+      
+     
+      transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+      cursor: pointer;
+      display: inline-block;
+      border-radius: 10px;
+  }
+  
+  .buttonHome:hover{
+      box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+      margin: 8px 10px 12px;
+      color:black;
+      background-color: #efb810;
+  }
+  
+  .loading{ 
+    
+    align-items: center;
+    margin-top: 50px;
+    
+  }
+  .loading img{
+    width: 500px;
+  } 
+  
+  .errorFound {
+    color: red;
+  }
+  .errorFound img{
+    width: 1080px;
+  } 
