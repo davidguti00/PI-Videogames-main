@@ -14,6 +14,8 @@ import Cards from "./Cards.jsx";
 import SearchBar from "./SearchBar.jsx";
 import { Paginated } from "./Paginated";
 import "./styles/Home.css"
+import Loarding from "./images/Loarding"
+import "./styles/Loarding.css";
 
 export default function Home() {
 
@@ -86,9 +88,9 @@ export default function Home() {
     return(
         <div className="allHome"> 
         {!allVideogamesLoad.length ?
-            <div className="loading">
-                <img src='https://1.bp.blogspot.com/-LrKEogzQIu4/X_ZF1ld0JSI/AAAAAAAACZ4/NDXxx9s1GKExxbFz-glkZn8yCVSM2HM7ACLcBGAsYHQ/w320-h240/LOADING.gif' alt="loading" />
-            </div> : 
+            <div className="loading1">
+                <Loarding/> 
+            </div>:
             <div className="allHome">
                 <div className="Nav">
                     <Link to= '/create'>

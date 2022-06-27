@@ -84,22 +84,15 @@ export function getGenres() {
     }
 
 }
-//ORDENAMIENTO POR GENERO
+//FILTRO POR GENERO
 export function filterVideogameByGenre(payload){
     return{
         type: 'FILTER_BY_GENRE',
         payload
     }
 }
-//ORDENAMIENTO POR PLATAFORMA
-// export function filterVideogameByPlatform(payload){
-//     return{
-//         type: 'FILTER_BY_PLATFORM',
-//         payload
-//     }
-// }
 
-// ORDENAMIENTO POR ORIGEN
+// FILTRO POR ORIGEN
 export function filterByCreated(payload){
     return{
         type: 'FILTER_BY_CREATED',
@@ -107,7 +100,7 @@ export function filterByCreated(payload){
     }
 }
 
-//ORDENAMIENTO ALFABETICO O
+//ORDENAMIENTO ALFABETICO 
 export function filterByAlpha(payload){
     return{
         type: 'FILTER_BY_ALPHA',
@@ -115,10 +108,18 @@ export function filterByAlpha(payload){
     }
 }
 
-//ORDENAMIENTO POR RATING///
+//ORDENAMIENTO POR RATING 
 export function filterByRating(payload){
     return{
         type: 'FILTER_BY_RATING',
+        payload
+    }
+}
+
+//TODAS LAS PLATAFORMAS
+export function getPlatform(payload){
+    return{
+        type: 'GET_PLATFORMS',
         payload
     }
 }
@@ -142,4 +143,5 @@ export const FILTER_BY_PLATFORM = "FILTER_BY_PLATFORM";
 export const FILTER_BY_CREATED = "FILTER_BY_CREATED";
 export const FILTER_BY_ALPHA = "FILTER_BY_ALPHA";
 export const FILTER_BY_RATING = "FILTER_BY_RATING";
+export const GET_PLATFORMS = "GET_PLATFORMS";
 export const CLEAR_STATE = "CLEAR_STATE";

@@ -1,5 +1,5 @@
 .containerSearch{
-    padding: 15px;
+    padding: 10px;
     border: none;
 
 
@@ -9,12 +9,12 @@
     color: white;
   }
 
-  .inputSearch{
-      width: 250px;
-      height: 25px;
+  .videogameSearch{
+      width: 200px;
+      height: 30px;
       font-size: 15px;
   }
 
   .search-error{
-      color: rgb(209, 209, 209)
+      color: rgb(172, 172, 172)
   }

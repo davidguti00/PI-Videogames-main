@@ -1,8 +1,7 @@
 require("dotenv").config();
 const axios = require('axios');
 const { API_KEY } = process.env;
-const { Genre, Videogame } = require ("../db")
-
+const { Genre, Platform, Videogame } = require ("../db");
 
 
 
@@ -13,12 +12,29 @@ module.exports = {
             .then(response =>response.data.results)
             allGenres.then(e=> {
                 e.map(g=>{
-                Genre.create({
-                    name: g.name, 
-                    id: g.id
-                })
+                    Genre.create({
+                        name: g.name, 
+                        id: g.id
+                    })
                 })
             })
+        } catch (error) {
+            console.log(error)
+        }
+    }, 
+
+    getPlatform : async () => {
+        try {
+            const allPlatform = axios(`https://api.rawg.io/api/platforms?key=${API_KEY}`)
+            .then(response =>response.data.results)
+            allPlatform.then(e=> {
+                e.map(p=>{
+                    Platform.create({
+                        name: p.name, 
+                    })
+                })
+            })
+
         } catch (error) {
             console.log(error)
         }
@@ -42,7 +58,6 @@ module.exports = {
                 nextpage = pageFour.data.next;
 
                 pageFive = await axios.get(nextpage);
-                
                 //const page1Videogames = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`);
                 //const page2Videogames = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=2`);
                 //const page3Videogames = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=3`);
@@ -64,9 +79,7 @@ module.exports = {
                         genres: e.genres || e.genres.map((g) => g.name),
                     }
                 })
-
                 return videogamesApi;
-
             } catch (err) {
                 console.log(err)
             }
@@ -87,19 +100,12 @@ module.exports = {
                         platforms: e.episode || e.platforms.map((p) => p.platform.name),
                         image: e.background_image,
                         genres: e.genres || e.genres.map((g) => g.name),
-                        
                     }
                 })
                 return videogamesApiByName;
-                
             } catch (error) {
                 console.log(error)
             }
-
-        
         }
     }
-
-
-
 }   

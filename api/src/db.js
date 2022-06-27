@@ -33,8 +33,10 @@ sequelize.models = Object.fromEntries(capsEntries);
 const { Videogame, Genre, Platform } = sequelize.models;
 
 // Aca vendrian las relaciones
-Videogame.belongsToMany(Genre, {through: 'videogame_genres'},{timestamps: false});
-Genre.belongsToMany(Videogame, {through: 'videogame_genres'},{timestamps: false});
+Videogame.belongsToMany(Genre,{through:"videogame_genre"})
+Genre.belongsToMany(Videogame,{through:"videogame_genre"})
+// Videogame.belongsToMany(Platform,{through:"videogame_platforms"})
+// Platform.belongsToMany(Videogame,{through:"videogame_platforms"})
 
 
 module.exports = {

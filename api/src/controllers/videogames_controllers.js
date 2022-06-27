@@ -49,7 +49,7 @@ router.get('/:id', async (req, res, next)=>{
     }else{
         try {
             const videogameIdApi = await axios(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`);
-        // console.log(videogameIdApi)
+            // console.log(videogameIdApi)
             let e = videogameIdApi.data;
             const detailObj = {
                 id: e.id, 
