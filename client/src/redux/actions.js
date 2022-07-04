@@ -2,6 +2,7 @@ import axios from "axios";
 
 
 
+
 export function getVideogames() {
     return async function (dispatch){
         const videogamesStorage = JSON.parse(localStorage.getItem('videoGamesStorage'))
@@ -28,23 +29,21 @@ export function getVideogames() {
 }
 
 export function postVideogame(videogame) {
-    return function (dispatch){
+    return async function (dispatch){
         try{
-            return axios.post(`http://localhost:3001/videogames`, videogame)
-            // const json = await axios.post(`http://localhost:3001/videogames`, videogame)
-            // const response = json.data
-            // console.log(response)
-            // return dispatch({
-            //     type: 'POST_VIDEOGAME',
-            //     payload: response
-            // })
+            const json = await axios.post(`http://localhost:3001/videogames`, videogame)
+            const response = json.data
+            console.log(response)
+            dispatch({
+                type: 'POST_VIDEOGAME',
+                payload: response
+            })
+            return response;
         } 
         catch(error){
             console.log(error)
         }
     }
-    
-    
 }
 
 export function getDetails (id) {
@@ -141,6 +140,41 @@ export function getPlatform() {
     }
 }
 
+export function deleteVideogame(id){
+    return async function(dispatch){
+        try{   
+            const json = await axios.delete(`http://localhost:3001/videogames/${id}`)
+            const data = json.data;
+            console.log(json)
+            if(data.status === 200) dispatch({
+                type: 'DELETE_VIDEOGAME',
+                payload: id
+            })
+            return data;
+
+        }catch(error){
+        console.log(error)
+    }
+    }
+}
+
+export function updateVideogame(id, form){
+    return async function(dispatch){
+        try{
+            const json = await axios.put(`http://localhost:3001/videogames/${id}`, form)
+            const data = json.data;
+            console.log(json)
+            if(data.status === 200) dispatch({
+                type: 'UPDATE_VIDEOGAME',
+                payload: id
+            })
+            return data;
+        }catch(error){
+            console.log(error)
+        }
+    }
+}
+
 export function clearState(payload){
     return{
         type: "CLEAR_STATE",
@@ -148,8 +182,8 @@ export function clearState(payload){
     }
 }
 
-//delete
-//put
+
+
 
 export const GET_ALL_VIDEOGAMES = "GET_ALL_VIDEOGAMES";
 export const GET_DETAILS = "GET_DETAILS";
@@ -161,5 +195,5 @@ export const FILTER_BY_CREATED = "FILTER_BY_CREATED";
 export const FILTER_BY_ALPHA = "FILTER_BY_ALPHA";
 export const FILTER_BY_RATING = "FILTER_BY_RATING";
 export const GET_PLATFORMS = "GET_PLATFORMS";
-export const POST_VIDEOGAME = "POST_VIDEOGAME"
+export const DELETE_VIDEOGAME = "DELETE_VIDEOGAME"
 export const CLEAR_STATE = "CLEAR_STATE";

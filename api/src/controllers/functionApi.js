@@ -46,28 +46,26 @@ module.exports = {
     getVideogamesApi : async (name) =>{
         if(!name){
             try {
-                pageOne = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`);
-                //pushear en aray 
-                let nextpage = pageOne.data.next;
+                // pageOne = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`);
+                // //pushear en aray 
+                // let nextpage = pageOne.data.next;
+                // pageTwo = await axios.get(nextpage);
+                // nextpage = pageTwo.data.next
+                // pageThree = await axios.get(nextpage);
+                // nextpage = pageThree.data.next;
+                // pageFour = await axios.get(nextpage);
+                // nextpage = pageFour.data.next
+                // pageFive = await axios.get(nextpage);
+                // const data =  await Promise.all ([pageOne, pageTwo, pageThree, pageFour, pageFive]);
                 
-                pageTwo = await axios.get(nextpage);
-                nextpage = pageTwo.data.next;
-
-                pageThree = await axios.get(nextpage);
-                nextpage = pageThree.data.next;
+                const page1Videogames = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`);
+                const page2Videogames = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=2`);
+                const page3Videogames = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=3`);
+                const page4Videogames = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=4`);
+                const page5Videogames = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=5`);
+                const data = await Promise.all([page1Videogames,page2Videogames,page3Videogames,page4Videogames,page5Videogames])
                 
-                pageFour = await axios.get(nextpage);
-                nextpage = pageFour.data.next;
-
-                pageFive = await axios.get(nextpage);
-                //const page1Videogames = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`);
-                //const page2Videogames = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=2`);
-                //const page3Videogames = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=3`);
-                //const page4Videogames = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=4`);
-                //const page5Videogames = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=5`);
-                //const data = await Promise.all([page1Videogames,page2Videogames,page3Videogames,page4Videogames,page5Videogames])
                 
-                const data =  await Promise.all ([pageOne, pageTwo, pageThree, pageFour, pageFive]);
                 const dataFinal = data.map( e => e.data.results).flat();
                 const videogamesApi = dataFinal.map(e => {
                     return {

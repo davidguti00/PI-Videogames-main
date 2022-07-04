@@ -25,7 +25,6 @@ export default function Home() {
     const dispatch = useDispatch()
     const allVideogames = useSelector((state) => state.videogames)
     const allVideogamesLoad = useSelector((state) => state.allVideogames)
-    //local storage
     const genres = useSelector((state) => state.genres);
 
     const [order, setOrder] = useState('')
@@ -40,7 +39,6 @@ export default function Home() {
 
     const paginated = (pageNumber) =>{
         setCurrentPage(pageNumber)
-        
     };
 
     const handlePrev = () =>{
@@ -56,11 +54,11 @@ export default function Home() {
         dispatch(getGenres());
     },[dispatch])
 
-    function handleClick(e) {
-        e.preventDefault()
-        dispatch(getVideogames())
-        setCurrentPage(1)
-    }
+    // function handleClick(e) {
+    //     e.preventDefault()
+    //     dispatch(getVideogames())
+    //     setCurrentPage(1)
+    // }
 
     function handleFilterGenre(e) {
         e.preventDefault()
@@ -86,7 +84,7 @@ export default function Home() {
         setOrder(e.target.value)
     }
     
-
+///////////////////
     return(
         <div className="allHome"> 
         {!allVideogamesLoad.length ?
@@ -98,7 +96,7 @@ export default function Home() {
                     <NavBar/>
                 </div>
             
-                <div class="filter-container">
+                <div className="filter-container">
                     <select className="custom-select" onChange={e =>  handleFilterByAlpha(e)} defaultValue= "Alphabetical order">
                         <option disabled={order}>Alphabetical order</option>
                         <option value='ASC'>A-Z</option>
@@ -162,6 +160,8 @@ export default function Home() {
                 />
             </div>
         }
+            <br />
+            <br />
         </div>
     )
 }

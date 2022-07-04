@@ -8,7 +8,7 @@ import {
     FILTER_BY_ALPHA,
     FILTER_BY_RATING,
     GET_PLATFORMS,
-    POST_VIDEOGAME,
+    // DELETE_VIDEOGAME,
     CLEAR_STATE,
 
 } from './actions';
@@ -20,7 +20,7 @@ const initialState = {
     genres: [],
     detail:[],
     platforms:[],
-    response: [],
+    
 }
 
 function rootReducer(state = initialState, action){
@@ -107,16 +107,17 @@ function rootReducer(state = initialState, action){
                 platforms: action.payload
             }
 
-        case POST_VIDEOGAME:
-            return{
-                ...state,
-                response: action.payload
-            }
+        // case DELETE_VIDEOGAME:
+        //     return{
+        //         ...state,
+        //         videogames: state.videogames.filter(e => e.id !== action.payload),
+        //         allVideogames: state.allVideogames.filter(e => e.id !== action.payload),
+        //     }
 
         case CLEAR_STATE:
             return{
                 ...state,
-                detail: action.payload,
+                allVideogames: action.payload,
             }
     
         default: return state;

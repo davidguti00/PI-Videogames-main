@@ -50,9 +50,11 @@ export default function SearchBar(){
                     onClick={(e) => handleSubmit(e)}> 
                     Search
                 </button>
+                {error ? 
                 <div className="error-message">
-                    {error && (<span>{error}</span>)}
-                </div>
+                    <span>{error}</span>
+                </div> : null
+                }
             </div>
         </div>
         

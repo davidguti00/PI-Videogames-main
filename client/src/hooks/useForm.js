@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
-import { getGenres, postVideogame, getPlatform } from '../redux/actions.js'
-import axios from "axios";
+import { getGenres, postVideogame, getPlatform, updateVideogame} from '../redux/actions.js'
+
+
 
 export const useForm = (inicialForm, validateForm)=>{
     const dispatch = useDispatch()
@@ -13,10 +14,9 @@ export const useForm = (inicialForm, validateForm)=>{
 
     const[form, setForm] = useState(inicialForm);
     const[error, setErrors] = useState({});
-    const[loading, setLoading] = useState (false);
     const[response, setResponse] = useState(null);
 
-
+console.log(form);
 
     const handleChange = (e) => {
         const{name, value} = e.target;
@@ -80,56 +80,56 @@ export const useForm = (inicialForm, validateForm)=>{
     useEffect(() => {
         dispatch(getGenres());
         dispatch(getPlatform());
-        dispatch(postVideogame());
     }, [dispatch])
 
-    const sendVideogame = (form) =>{
-            return axios.post(`http://localhost:3001/videogames`, form)
-        
-    }
 
     const  handleSubmit = (e) => {
         e.preventDefault()
         setErrors(validateForm(form))
         if(Object.keys(error).length === 0){
-//creo
-//respues
-            sendVideogame(form).then(res=>{
+
+            alert ("submitting form");
+            dispatch(postVideogame(form))
+            .then(res=>{
                 console.log(res)
-                alert(res.data)
+                alert(res)
             })
-
             
+            localStorage.clear();
+            history.push('/home')
             
-            // alert ("Enviando formulario");
-            // // dispatch(postVideogame(form));
-            // setTimeout(()=>{alert(responsePost)}, 5000)
-                
-                
-            // localStorage.clear();
-            // setLoading(true);
-            
-            // setResponse(true);
-            // setForm(inicialForm);
-
-
-            
-            // responsePost?setLoading(true)&&setResponse(true): 
-            // alert(responsePost)&&setLoading(false)&&setForm(inicialForm)
-            
-            // history.push('/home')
-                
         } else {
-            alert('faltan datos o hay errores en la carga de datos')
+            alert('missing data or errors in data loading')
         }
     };
+
+    function handleEdit(e, id){
+        e.preventDefault()
+        setErrors(validateForm(form))
+        if(Object.keys(error).length === 0){
+            function confirmacion(){
+                var respuesta = window.confirm('Are you sure you want to edit the game?')
+                if (respuesta === true){
+                    localStorage.clear();
+                    dispatch(updateVideogame(id,form))
+                    .then(res=>{
+                        console.log(res)
+                        alert(res)
+                    })
+                }
+            } 
+            confirmacion()
+            history.push('/home')
+        } else {
+        alert('missing data or errors in data loading')
+    }                   
+    }
 
     return{
         genres,
         platforms,
         form, 
         error, 
-        loading, 
         response,
         responsePost,
         handleClick,
@@ -140,5 +140,6 @@ export const useForm = (inicialForm, validateForm)=>{
         handleDeleteGenres,
         handleDeletePlatforms,
         handleSubmit,
+        handleEdit,
     }
 }

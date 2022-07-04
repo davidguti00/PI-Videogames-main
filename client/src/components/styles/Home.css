@@ -1,8 +1,4 @@
-/*.allHome{
-  background: #757575;
-  font-family: 'Bebas Neue',Times,serif;
 
-}
 
 
   
@@ -19,20 +15,20 @@
   }
   .errorFound img{
     width: 1080px;
-  } */
+  } 
 
   .allHome {
-    background-color: rgb(10, 10, 10);
-    background: rgb(10, 10, 10);
+    background: #ffffff;
+    ;
   }
 
   .card-container {
-    margin-top: 100px;
+    margin-top: 50px;
   }
 
   .filter-container {
     position: relative;
-    top: 95px;
+    top: 40px;
   }
 
   .filter-container select {

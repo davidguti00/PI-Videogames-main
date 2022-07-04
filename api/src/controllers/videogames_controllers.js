@@ -103,8 +103,8 @@ router.post('/', async (req, res, next)=>{
             await newVideogame.addGenre(genreFind)
             
             if(!created){
-                return res.status(200).send("el videojuego ya existe")
-            }else  return res.status(201).send("el videojuego se creo correctamente").json(newVideogame)
+                return res.status(200).send("The videogame cannot be created because it already exists")
+            }else  return res.status(201).send("The videogame was created correctly").json(newVideogame)
 
         } return res.send("Missing data")
     } catch (err) {
@@ -112,6 +112,39 @@ router.post('/', async (req, res, next)=>{
     }
 });
 
+router.delete('/:id', async (req, res, next)=>{
+    const {id} = req.params
+    try {
+        await Videogame.destroy({
+            where: {id:id}
+        })
+        res.status(200).send("the videogame was successfully deleted")
+    } catch (error) {
+        next(error)
+    }
+});
 
+router.put('/:id', async (req, res, next)=>{
+    const {id} = req.params
+    const { name, description, released, image, rating, genres, platforms } = req.body
+    try {
+        await Videogame.update({
+            name: name,
+            description: description, 
+            released: released, 
+            image: image, 
+            rating: rating, 
+            genres: genres, 
+            platforms: platforms,
+        },{
+            where:{id},
+        })
+        res.status(200).send("the video game was successfully modified")
+    } catch (error) {
+        
+    }
+});
+
+router.update
 
 module.exports = router;
