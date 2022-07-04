@@ -1,20 +1,82 @@
-.containerSearch{
-    padding: 10px;
-    border: none;
-
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
 }
-.containerSearch a.active {
-    background-color: #2196F3;
-    color: white;
+
+.flexbox{
+    background: #171c24;
+    position: fixed;
+    width: 13%;
+  }
+  .flexbox {
+    position: relative;
+    display: flex;
+    max-width: calc(100% - 200px);
+    margin: 0 auto;
+    height: 70px;
+    align-items: center;
+    justify-content: space-between;
   }
 
-  .videogameSearch{
-      width: 200px;
+
+
+.search {
+    margin: 20%;
+    display: flex;
+    position: relative;
+    margin-right: 2px;
+}
+
+  .search > input {
+      color: black;
+      font-size: 14px;
+      background: transparent;
+      width: 25px;
       height: 30px;
-      font-size: 15px;
+      padding: 10px;
+      border:solid 1px rgb(255, 255, 255);
+      outline: none;
+      border-radius: 8px;
+      transition: width 0.5s;
+      margin-right: 8px;
+      color: white;
+      
+
   }
 
-  .search-error{
-      color: rgb(172, 172, 172)
+  .search > button {
+      
+      background-color: #171c24;
+      color: white;
+      border: none;
+      font-family: 'Poppins';
+      font-weight: 600;
   }
+
+  .search > input::placeholder {
+    color: black;
+    opacity: 0;
+    transition: opacity 150ms easy-out;
+  }
+
+  .search > input:focus,
+  .search >input:not(:placeholder-shown){
+      width: 250px;
+  }
+
+
+.error-message {
+    position: absolute;
+    color: red;
+    background-color: rgba(222, 0, 0, 0.484);
+    border: 1px solid red;
+    border-radius: 8px;
+    font-size: 10px;
+    top: 60px;
+    padding: 4px 8px;
+    line-height: initial;
+}

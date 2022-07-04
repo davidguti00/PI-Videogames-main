@@ -40,6 +40,8 @@ module.exports = {
         }
     }, 
 
+    //videogamestotal(200) / 20
+    //
 
     getVideogamesApi : async (name) =>{
         if(!name){
@@ -77,12 +79,14 @@ module.exports = {
                         platforms: e.episode || e.platforms.map((p) => p.platform.name),
                         image: e.background_image,
                         genres: e.genres || e.genres.map((g) => g.name),
+
                     }
                 })
                 return videogamesApi;
             } catch (err) {
                 console.log(err)
             }
+
         }else{
             try {
                 pageOneName = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${name}&page_size=15`);

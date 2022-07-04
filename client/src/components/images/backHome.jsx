@@ -10,13 +10,10 @@ import {
     filterByRating,
 }from "../redux/actions";
 import { Link } from "react-router-dom";
-import "./styles/Home.css";
 import Cards from "./Cards.jsx";
-import NavBar from "./NavBar.jsx"
-
-import Paginated from "./Paginated.jsx";
-import "./styles/SearchBar.css";
-
+import SearchBar from "./SearchBar.jsx";
+import { Paginated } from "./Paginated";
+import "./styles/Home.css"
 import Loarding from "./images/Loarding"
 import "./styles/Loarding.css";
 
@@ -58,6 +55,7 @@ export default function Home() {
 
     function handleClick(e) {
         e.preventDefault()
+        
         dispatch(getVideogames())
         setCurrentPage(1)
     }
@@ -87,6 +85,8 @@ export default function Home() {
     }
     
 
+    
+
     return(
         <div className="allHome"> 
         {!allVideogamesLoad.length ?
@@ -94,11 +94,20 @@ export default function Home() {
                 <Loarding/> 
             </div>:
             <div className="allHome">
-                <div>
-                    <NavBar/>
+                <div className="Nav">
+                    <Link to= '/create'>
+                        <button className= "buttonHome"> Create Videogame </button>
+                    </Link>
+                        <button className="buttonHome" onClick={e => { handleClick(e) }}>Reload Videogames</button>
+                    <Link to= '/'>
+                        <button className= "buttonHome"> Exit </button>
+                    </Link>
+
+                    <div className="SearchBar">
+                        <SearchBar/>
+                    </div>
                 </div>
-            
-                <div class="filter-container">
+                <div>
                     <select className="custom-select" onChange={e =>  handleFilterByAlpha(e)} defaultValue= "Alphabetical order">
                         <option disabled={order}>Alphabetical order</option>
                         <option value='ASC'>A-Z</option>
@@ -115,13 +124,14 @@ export default function Home() {
                                 return  <option value={x.name} key={id}>{x.name}</option>;
                             })}
                     </select>
+                    
                     <select className="custom-select" id="originSelect" onChange={(e) => handleFilterByCreated(e)} defaultValue= "All Video Games">
                         <option value="all">All Video Games</option>
                         <option value="api">Existing</option>
                         <option value="created">Created</option>
                     </select>
                 </div>
-                {/* <Paginated
+                <Paginated
                     currentPage={currentPage}
                     handlePrev={handlePrev}
                     handleNext={handleNext}
@@ -130,8 +140,9 @@ export default function Home() {
                     paginated={paginated}
                     nextPage={nextPage}
                     prevPage={prevPage}
-                /> */}
-                <div className="card-container">
+                />
+                <h1>Videogames</h1>
+
                 {currentVideogames.length ? 
                 currentVideogames?.map((e) => {return (
                             <Link  to={"/home/" + e.id} key={e.id}>
@@ -146,10 +157,11 @@ export default function Home() {
                 )}): 
                     <div className="errorFound">
                         <h1>Sorry!, the searched video game is not found</h1>
+                        <h2>Error 404</h2>
                         <img src="https://dinahosting.com/blog/cont/uploads/2020/07/eror-404.jpg" alt="error" />
                     </div>
                 }
-                </div>
+
                 <Paginated
                     currentPage={currentPage}
                     handlePrev={handlePrev}
@@ -165,4 +177,6 @@ export default function Home() {
         </div>
     )
 }
+
+
 

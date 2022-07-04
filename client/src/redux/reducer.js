@@ -8,9 +8,10 @@ import {
     FILTER_BY_ALPHA,
     FILTER_BY_RATING,
     GET_PLATFORMS,
+    POST_VIDEOGAME,
     CLEAR_STATE,
 
-    } from './actions';
+} from './actions';
 
 
 const initialState = {
@@ -19,6 +20,7 @@ const initialState = {
     genres: [],
     detail:[],
     platforms:[],
+    response: [],
 }
 
 function rootReducer(state = initialState, action){
@@ -103,6 +105,12 @@ function rootReducer(state = initialState, action){
             return {
                 ...state,
                 platforms: action.payload
+            }
+
+        case POST_VIDEOGAME:
+            return{
+                ...state,
+                response: action.payload
             }
 
         case CLEAR_STATE:

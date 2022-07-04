@@ -88,7 +88,7 @@ __Ruta de creación de videojuegos__: debe contener
 - [ ] Posibilidad de seleccionar/agregar varias plataformas
 - [ ] Botón/Opción para crear un nuevo videojuego
 
-> Es requisito que el formulario de creación esté validado con JavaScript y no sólo con validaciones HTML. Pueden agregar las validaciones que consideren. Por ejemplo: Que el nombre del juego no pueda contener algunos símbolos, que el rating no pueda exceder determinado valor, etc.
+> Es requisito que el formulario de creación esté validado con JavaScript y no sólo con validaciones HTML. Pueden agregar las validaciones que consideren. Por ejemplo: Que el nombre del juego no pueda contener algunos símbolos, que el rating no pueda exceder determinado value, etc.
 
 ## Base de datos
 

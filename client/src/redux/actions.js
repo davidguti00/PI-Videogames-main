@@ -13,29 +13,38 @@ export function getVideogames() {
             })
         } else{
             try{
-            const json = await axios.get(`http://localhost:3001/videogames`)
-            const data = json.data
-            localStorage.setItem('videoGamesStorage',JSON.stringify(data));
-            return dispatch({
-                type: 'GET_ALL_VIDEOGAMES',
-                payload: data
+                const json = await axios.get(`http://localhost:3001/videogames`)
+                const data = json.data
+                    localStorage.setItem('videoGamesStorage',JSON.stringify(data));
+                return dispatch({
+                    type: 'GET_ALL_VIDEOGAMES',
+                    payload: data
             })
-        } catch(error){
-            console.log(error)
-        }
+            } catch(error){
+                console.log(error)
+            }
         }
     }
 }
 
-export function postVideogame() {
-    return async function (){
+export function postVideogame(videogame) {
+    return function (dispatch){
         try{
-            const json = await axios.post(`http://localhost:3001/videogames`)
-            return json
-        } catch(error){
+            return axios.post(`http://localhost:3001/videogames`, videogame)
+            // const json = await axios.post(`http://localhost:3001/videogames`, videogame)
+            // const response = json.data
+            // console.log(response)
+            // return dispatch({
+            //     type: 'POST_VIDEOGAME',
+            //     payload: response
+            // })
+        } 
+        catch(error){
             console.log(error)
         }
     }
+    
+    
 }
 
 export function getDetails (id) {
@@ -117,10 +126,18 @@ export function filterByRating(payload){
 }
 
 //TODAS LAS PLATAFORMAS
-export function getPlatform(payload){
-    return{
-        type: 'GET_PLATFORMS',
-        payload
+export function getPlatform() {
+    return async function (dispatch){
+        try{
+            const json = await axios.get(`http://localhost:3001/platforms`)
+            const data = json.data
+            return dispatch({
+                type: 'GET_PLATFORMS',
+                payload: data
+            })
+        } catch(error){
+            console.log(error)
+        }
     }
 }
 
@@ -144,4 +161,5 @@ export const FILTER_BY_CREATED = "FILTER_BY_CREATED";
 export const FILTER_BY_ALPHA = "FILTER_BY_ALPHA";
 export const FILTER_BY_RATING = "FILTER_BY_RATING";
 export const GET_PLATFORMS = "GET_PLATFORMS";
+export const POST_VIDEOGAME = "POST_VIDEOGAME"
 export const CLEAR_STATE = "CLEAR_STATE";

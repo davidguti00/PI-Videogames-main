@@ -6,7 +6,6 @@ export default function Cards({ name, image, genres, rating }) {
 
     
     return (
-
         <div className="card">
             <h1 className="NameTitle">{name.replace(name[0], name[0].toUpperCase())}</h1>
             <img src={image} alt="imagen del juego" className="imgCard" />

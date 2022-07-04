@@ -3,8 +3,8 @@
 .card {
    
     border-radius: 8px;
-    color: rgb(255, 255, 255);
-    background-color: #000000e5;
+    color: #f1f1f1;
+    background-color: rgb(15, 15, 15);
     width: 250px;
     height: 300px;
     margin-top: 10px;
@@ -23,6 +23,7 @@
 }
 
 .imgCard{
+    object-fit: cover;
     width: 200px;
     height: 100px;
     align-items: center;
@@ -33,16 +34,16 @@
 
 }
 
-/* .divInfo{
+.divInfo{
     text-align: left;
     padding: 0 10px 15px 15px;
-    background-color: #efb810;
-    color: #000000;
-    width: 80%;
-    height: 150px;
-    border-radius: 30px;
-    margin-bottom: 10px;
-} */
+    background-color: #3b3b3b;
+    color: #f1f1f1;
+    width: 50%;
+    height: 30px;
+    border-radius: 8px;
+    
+}
 
 .ContentTitle{
     font-size: 15px;
@@ -65,3 +66,10 @@
 .card:hover .otherCaracters{
     opacity: 100;
 }
+
+
+
+
+
+
+

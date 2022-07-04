@@ -14,8 +14,8 @@ const { getVideogamesDb } = require ("./functionDataBase");
 router.get('/', async (req, res, next)=>{
     const { name } = req.query
     try {
-        const dataApi = await getVideogamesApi(name);
-        const dataDb = await getVideogamesDb(name);
+        const dataApi = await getVideogamesApi(name); 
+        const dataDb = await getVideogamesDb(name);   
 //console.log(dataDb);
         const finalConcat = dataDb.concat(dataApi);
 
@@ -25,7 +25,6 @@ router.get('/', async (req, res, next)=>{
         next(err)
     }
 });
-
 
 
 router.get('/:id', async (req, res, next)=>{
@@ -104,8 +103,8 @@ router.post('/', async (req, res, next)=>{
             await newVideogame.addGenre(genreFind)
             
             if(!created){
-                return res.send("this videogame has been created")
-            }else  return res.send(newVideogame)
+                return res.status(200).send("el videojuego ya existe")
+            }else  return res.status(201).send("el videojuego se creo correctamente").json(newVideogame)
 
         } return res.send("Missing data")
     } catch (err) {

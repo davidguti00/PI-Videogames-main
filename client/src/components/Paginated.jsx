@@ -1,7 +1,8 @@
 import React from "react";
+import "./styles/Paginated.css";
 
 
-export const Paginated = ({allVideogames, videogamePP, paginated, prevPage, handleNext, handlePrev, nextPage, currentPage}) =>{
+export default function Paginated ({allVideogames, videogamePP, paginated, prevPage, handleNext, handlePrev, nextPage, currentPage}){
     const max = allVideogames/videogamePP
     const pageNumbers = []
     for (let i = 0; i <Math.ceil(max); i++) {

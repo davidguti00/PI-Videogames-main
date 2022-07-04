@@ -8,7 +8,7 @@ import "./styles/SearchBar.css"
 function validate(videogame) {
     let error = "";
     if (videogame === "") {
-        error = "PLEASE INSERT A NAME";
+        error = "Please insert a name";
     }
     return error;
 }
@@ -34,15 +34,27 @@ export default function SearchBar(){
 
 
     return(
-        <div className="containerSearch">
-            <videogame type="text" className="videogameSearch"name="name" value={name}
-            placeholder="search game..." onChange={e => handlevideogameChange(e)} 
-            />
-            <button className="buttonHome"
-            type="submit" onClick={(e) => handleSubmit(e)}> 
-            Search 🔍
-            </button>
-            {error && (<h1 className="search-error">{error}</h1>)}
+        <div className="flexbox">
+            <div className="search">
+                <input 
+                    type="text" 
+                    className="inputSearch"
+                    name="name" 
+                    value={name}
+                    placeholder="search game..." 
+                    onChange={e => handlevideogameChange(e)} 
+                />
+                <button 
+                    className="buttonHome"
+                    type="submit" 
+                    onClick={(e) => handleSubmit(e)}> 
+                    Search
+                </button>
+                <div className="error-message">
+                    {error && (<span>{error}</span>)}
+                </div>
+            </div>
         </div>
+        
     )
 }
