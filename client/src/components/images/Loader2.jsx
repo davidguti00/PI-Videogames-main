@@ -1,6 +1,6 @@
-<div className="gooey">
-  <span className="dot"></span>
-  <div className="dots">
+<div class="gooey">
+  <span class="dot"></span>
+  <div class="dots">
     <span></span>
     <span></span>
     <span></span>

@@ -84,7 +84,7 @@ export default function Home() {
         setOrder(e.target.value)
     }
     
-///////////////////
+
     return(
         <div className="allHome"> 
         {!allVideogamesLoad.length ?
@@ -96,7 +96,7 @@ export default function Home() {
                     <NavBar/>
                 </div>
             
-                <div className="filter-container">
+                <div class="filter-container">
                     <select className="custom-select" onChange={e =>  handleFilterByAlpha(e)} defaultValue= "Alphabetical order">
                         <option disabled={order}>Alphabetical order</option>
                         <option value='ASC'>A-Z</option>
@@ -119,17 +119,18 @@ export default function Home() {
                         <option value="created">Created</option>
                     </select>
                 </div>
-                {/* <Paginated
-                    currentPage={currentPage}
-                    handlePrev={handlePrev}
-                    handleNext={handleNext}
-                    allVideogames={allVideogames.length}
-                    videogamePP={videogamePP}
-                    paginated={paginated}
-                    nextPage={nextPage}
-                    prevPage={prevPage}
-                /> */}
+                
                 <div className="card-container">
+                    <Paginated
+                        currentPage={currentPage}
+                        handlePrev={handlePrev}
+                        handleNext={handleNext}
+                        allVideogames={allVideogames.length}
+                        videogamePP={videogamePP}
+                        paginated={paginated}
+                        nextPage={nextPage}
+                        prevPage={prevPage}
+                    />
                 {currentVideogames.length ? 
                 currentVideogames?.map((e) => {return (
                             <Link  to={"/home/" + e.id} key={e.id}>
@@ -148,7 +149,7 @@ export default function Home() {
                     </div>
                 }
                 </div>
-                <Paginated
+                {/* <Paginated
                     currentPage={currentPage}
                     handlePrev={handlePrev}
                     handleNext={handleNext}
@@ -157,7 +158,7 @@ export default function Home() {
                     paginated={paginated}
                     nextPage={nextPage}
                     prevPage={prevPage}
-                />
+                /> */}
             </div>
         }
             <br />

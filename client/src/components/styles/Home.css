@@ -23,16 +23,21 @@
   }
 
   .card-container {
-    margin-top: 50px;
+    margin-top: 40px;
   }
 
   .filter-container {
     position: relative;
-    top: 40px;
+    top: 30px;
   }
 
   .filter-container select {
     margin-right: 8px;
     border-radius: 8px;
     padding: 4px 8px;
+  }
+
+  .custom-select:hover{
+    background: #171c24;
+    color: white;
   }

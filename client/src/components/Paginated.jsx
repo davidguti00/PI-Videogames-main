@@ -12,7 +12,8 @@ export default function Paginated ({allVideogames, videogamePP, paginated, prevP
 
     return(
         <nav>
-            <ul className="paginated">
+            <div className="page-conteiner">
+                <ul className="paginated">
                 <p className="btnPage" onClick={()=>{paginated(pageNumbers[0])}}>1</p>
                 
                 <button className = "btnPagina" disabled = {prevPage === 0? true : false}
@@ -26,6 +27,8 @@ export default function Paginated ({allVideogames, videogamePP, paginated, prevP
                 </button>
                 <p className="btnPage" onClick={()=>{paginated(pageNumbers.length)}}>{pageNumbers.length}</p>
             </ul>
+            </div>
+            
         </nav>
     )
 }

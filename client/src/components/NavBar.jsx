@@ -20,7 +20,7 @@ export default function NavBar() {
                             <li><a href='/create'>Create Videogame</a></li>
                         </ul>
                         <form className="search-box">
-                        <div className="search-icon"><i className="fas fa-search"></i>
+                        <div class="search-icon"><i class="fas fa-search"></i>
                             <SearchBar/>
                         </div>
                     </form>

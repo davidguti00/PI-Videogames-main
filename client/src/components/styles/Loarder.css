@@ -9,7 +9,7 @@ ul#loarder li {
     width: 0.4rem;
     height: 0.4rem;
     border-radius: 50%;
-    background-color: #757575;
+    background-color: #171c24;
 
     animation: dotanimation 0.8s ease infinite alternate both;
 }

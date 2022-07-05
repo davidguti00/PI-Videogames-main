@@ -8,16 +8,7 @@ import Loarding from "./images/Loarding"
 import "./styles/Loarding.css";
 import NavBar from "./NavBar.jsx"
 import { deleteVideogame } from "../redux/actions";
-
-const starsValue = (value)=>{
-
-    if (value > 0 && value < 1) return "";
-    if (value > 1 && value < 2)return "⭐ ";
-    if(value > 2 && value < 3) return "⭐ ⭐";
-    if(value > 3 && value < 4) return "⭐ ⭐ ⭐";
-    if(value > 4 && value < 5) return "⭐ ⭐ ⭐ ⭐";
-    if(value >= 5) return "⭐ ⭐ ⭐ ⭐ ⭐";
-}
+import { starsValue } from "../hooks/functions";
 
 
 
@@ -73,34 +64,31 @@ console.log(videogameDetails)
             <div className="loading1">
                 <Loarding/> 
             </div>:
-            <div className="allCard">
-            
+            <div >
+                <br/>
+            <button onClick={(e) => {handleClick(e)}} className="button_detail_edit">Back to home!</button>
                 <div className="cardDetail">
                     
                     <div className="containterLeft">
                         <h1>{videogameDetails.name}</h1>
                         <img src={videogameDetails.image} className="imgDetailCard" alt="Imagen del videojuego" />
+                        {videogameDetails.createdInDb ? 
+                        <div>
+                            <button onClick={()=> handleDelete(videogameDetails.id)} className="button_detail_delete">
+                                delete Videogame
+                            </button>
+                        </div>: null
+                        }
+                        {videogameDetails.createdInDb ? 
+                        <div>
+                            <button onClick={()=> handleEdit(videogameDetails.id)} className="button_detail_edit">
+                                Edit Videogame
+                            </button>
+                        </div>: null
+                        }
                         <h4>Release Date: {videogameDetails.released}</h4>
                         <h3>{videogameDetails.rating}  {starsValue(videogameDetails.rating)}</h3>
                         <br></br>
-                        <h3>Description</h3>
-                        <p>{videogameDetails.description.replace(/<[^>]+>/g,' ')}</p>
-                    </div>
-                    {videogameDetails.createdInDb ? 
-                    <div>
-                        <button onClick={()=> handleDelete(videogameDetails.id)} className="button_detail_delete">
-                            delete Videogame
-                        </button>
-                    </div>: null
-                    }
-                    {videogameDetails.createdInDb ? 
-                    <div>
-                        <button onClick={()=> handleEdit(videogameDetails.id)} className="button_detail_edit">
-                            Edit Videogame
-                        </button>
-                    </div>: null
-                    }
-                    <div className="containterLeft">
                         <h3>Genres:</h3>
                         <div>
                             {videogameDetails.genres?.map((e,i)=> {
@@ -140,9 +128,12 @@ console.log(videogameDetails)
                             })}
                         </div>
                     </div>
+                    
+                    <div className="containterLeft">
+                    <h3>Description</h3>
+                        <p>{videogameDetails.description.replace(/<[^>]+>/g,' ')}</p>
+                    </div>
                 </div>
-                <br />
-                <button onClick={(e) => {handleClick(e)}} className="ButtonBack">Back to home!</button>
                 </div>
             }
             
