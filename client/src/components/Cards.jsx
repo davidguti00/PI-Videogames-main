@@ -12,7 +12,6 @@ export default function Cards({ name, image, genres, rating, props }) {
             <img src={image} alt="imagen del juego" className="imgCard" />
             <h1 className="NameTitle">{name.replace(name[0], name[0].toUpperCase())}</h1>
             <div className="info">
-                <h3 className="ContentTitle">Genres</h3>
                 {genres?.map(e => {
                     if (typeof (e) === 'string') {
                         return (
@@ -23,9 +22,9 @@ export default function Cards({ name, image, genres, rating, props }) {
                     }
                     else {
                         return (
-                            <span key={e.name}>
+                            <h4 key={e.name}>
                                 {" " +e.name+ " "} 
-                            </span>
+                            </h4>
                         )
                     }
                 })}

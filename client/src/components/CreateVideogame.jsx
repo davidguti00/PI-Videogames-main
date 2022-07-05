@@ -1,6 +1,5 @@
 
 import { useForm } from "../hooks/useForm.js";
-import "./styles/Loarder.css";
 import NavBar from "./NavBar.jsx"
 import { useHistory } from "react-router-dom"
 

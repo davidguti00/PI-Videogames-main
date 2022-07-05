@@ -8,9 +8,9 @@
 }
 
 .page-conteiner{
-    border: #000000;
-    background-color: #efb810;
+    border: none;
     
+    padding: 0.6rem;
     size-adjust: 50%;
     align-items: center;
     justify-content: center;
@@ -18,7 +18,8 @@
 
 .paginated{
     display: inline-block;
-    padding: 0;
+    padding: 0.1rem;
+    border-radius: 6px;
     display: flex;
     justify-content: center;
     color: #171c24;
@@ -32,25 +33,19 @@
     margin-right: 8px;
 }
 
-.paginated a {
-    color: rgb(0, 0, 0);
+.btnPage{
+    color: rgb(255, 255, 255);
     float: left;
     padding: 8px 16px;
     margin-left: 10px;
     margin-right: 10px;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 9px;
     border: 1px solid #ffffff;
     border-radius: 6px;
     cursor: pointer;
-    background-color: #efb810;
+    background-color: #171c24;
 }
-
-.paginated a:active{
-    background: rgb(237, 0, 0);
-    color: aliceblue;
-}
-
 
 .paginated a:hover{
     background: #000000;
@@ -59,20 +54,3 @@
     
 }
 
-
-
-
-ul.pagination {
-    display: inline-block;
-    padding: 0;
-    margin: 0;
-}
-
-ul.pagination li {display: inline;}
-
-ul.pagination li a {
-    color: black;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
-}

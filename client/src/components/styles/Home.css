@@ -4,18 +4,31 @@
   
   .loading1{ 
     position: absolute;
+  
     top: 50%;
-    left: 50%;
-    margin: -25px 0 0 -25px;
+    left: 46%;
+    margin: -25px 0 0 -25px; 
   }
   
-  
-  .errorFound {
-    color: red;
+
+  .not_found {
+    width: auto;
+    height: 92vh;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
   }
-  .errorFound img{
-    width: 1080px;
-  } 
+
+.image_not_found {
+	width: 1080px;
+}
+
+
+.landing {
+	display: flex;
+	justify-content: space-around;
+
+}
 
   .allHome {
     background: #ffffff;

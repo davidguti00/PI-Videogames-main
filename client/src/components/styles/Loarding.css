@@ -2,7 +2,7 @@
 
 .loader {
 
-    width: 120px;
+    width: 150px;
     height: 75px;
     display: flex;
     flex-wrap: wrap;
@@ -11,22 +11,22 @@
 }
 
 .text {
-    color: #757575;
+    color: #171c24;
     width: 100px;
     font-family: 'Bebas Neue',Times,serif;
 }
 .loader span{
     
-    font-size: 22px;
+    font-size: 30px;
     text-transform: uppercase;
     margin: auto;
 }
 
 .ball {
-    width: 25px;
-    height: 25px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
-    background-color: rgb(86, 86, 86);
+    background-color: #171c24;
     animation: bounce .5s alternate infinite;
 }
 

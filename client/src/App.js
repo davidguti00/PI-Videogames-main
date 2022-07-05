@@ -5,6 +5,7 @@ import LandingPage from "./components/LandingPage";
 import Home from "./components/Home";
 import Details from "./components/Details";
 import CreateVideogame from "./components/CreateVideogame";
+import NotFound from './components/NotFound.jsx';
 
 
 function App() {
@@ -12,10 +13,11 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Switch>
-          <Route path ='/create/' component={CreateVideogame}/>
-          <Route path ='/home/:id/' component={Details}/>
-          <Route path ='/home/' component={Home}/>
-          <Route path ='/' component={LandingPage}/>
+          <Route exact path ='/create/' component={CreateVideogame}/>
+          <Route exact path ='/home/:id/' component={Details}/>
+          <Route exact path ='/home/' component={Home}/>
+          <Route exact path ='/' component={LandingPage}/>
+          <Route path='*' component={NotFound} />
         </Switch>
       </div>
     </BrowserRouter>

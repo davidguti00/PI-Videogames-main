@@ -17,6 +17,8 @@ import NavBar from "./NavBar.jsx"
 import Paginated from "./Paginated.jsx";
 import "./styles/SearchBar.css";
 
+import NotFound  from "./NotFound";
+
 import Loarding from "./images/Loarding"
 import "./styles/Loarding.css";
 
@@ -104,8 +106,8 @@ export default function Home() {
                     </select>
                     <select className="custom-select" id="ratingSelect" onChange={e =>  handleFilterByRating(e) } defaultValue= "Select Rating">
                         <option disabled={order} >Select Rating</option>
-                        <option value="asc">to the least popular</option>
-                        <option value="desc">to the most popular</option>
+                        <option value="asc">to the most popular</option> to the least popular
+                        <option value="desc">to the least popular</option>
                     </select>
                     <select className="custom-select" name="genres" onChange={(e) => handleFilterGenre(e)} defaultValue= "All Genres">
                         <option value={'all'}>All Genres</option>
@@ -143,9 +145,8 @@ export default function Home() {
                                 />
                             </Link>
                 )}): 
-                    <div className="errorFound">
-                        <h1>Sorry!, the searched video game is not found</h1>
-                        <img src="https://dinahosting.com/blog/cont/uploads/2020/07/eror-404.jpg" alt="error" />
+                    <div >
+                        <NotFound/>
                     </div>
                 }
                 </div>
@@ -161,8 +162,6 @@ export default function Home() {
                 /> */}
             </div>
         }
-            <br />
-            <br />
         </div>
     )
 }
