@@ -20,7 +20,7 @@ router.get('/', async (req, res, next)=>{
         const finalConcat = dataDb.concat(dataApi);
 
 //if(!finalConcat.length) return res.send('No response').status(404);
-        return res.status(200).json(finalConcat);
+        return res.status(200).json(finalConcat).send("videogames shipped");
     } catch (err) {
         next(err)
     }

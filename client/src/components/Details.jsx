@@ -18,16 +18,18 @@ export default function Details(prop) {
 
     const history = useHistory()
     const { id } = useParams()
+
     useEffect(() => {
         dispatch(getDetails(id))
-        dispatch (clearState()) 
+        return ()=>{
+            dispatch (clearState())
+        }
     }, [dispatch, id])
 
 
     function handleClick(e) {
         dispatch (clearState())
         history.push('/home')
-
     }
 
     function handleDelete(id){

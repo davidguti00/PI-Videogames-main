@@ -7,6 +7,13 @@ const { Videogame, conn } = require('../../src/db.js');
 const agent = session(app);
 const videogame = {
   name: 'Super Mario Bros',
+
+  description: "description",
+  released: "12-12-22",
+  rating: 5,
+  img: "https://i.pinimg.com/564x/16/21/c2/1621c21b9aaf5b125e412327b0fab8b3.jpg",
+  platforms: ["Andriod", "Linux"],
+  createdInDb: true
 };
 
 describe('Videogame routes', () => {
@@ -20,5 +27,10 @@ describe('Videogame routes', () => {
     it('should get 200', () =>
       agent.get('/videogames').expect(200)
     );
+    it('responds with and object with message  ', () =>
+    agent.get('/videogames').then((res)=>{
+      expect(res.send).equal("get all videogames")
+    })
+  );
   });
 });

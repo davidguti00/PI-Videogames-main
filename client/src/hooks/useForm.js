@@ -10,11 +10,10 @@ export const useForm = (inicialForm, validateForm)=>{
     const history = useHistory()
     const genres = useSelector((state) => state.genres)
     const platforms = useSelector((state) => state.platforms)
-    const responsePost = useSelector((state) => state.response)
+    
 
     const[form, setForm] = useState(inicialForm);
     const[error, setErrors] = useState({});
-    const[response, setResponse] = useState(null);
 
 console.log(form);
 
@@ -130,8 +129,6 @@ console.log(form);
         platforms,
         form, 
         error, 
-        response,
-        responsePost,
         handleClick,
         handleChange, 
         handleBlur, 

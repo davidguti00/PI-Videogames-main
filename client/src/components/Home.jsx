@@ -8,6 +8,7 @@ import {
     filterByCreated,
     filterByAlpha, 
     filterByRating,
+    clearState,
 }from "../redux/actions";
 import { Link } from "react-router-dom";
 import "./styles/Home.css";
@@ -53,7 +54,10 @@ export default function Home() {
 
     useEffect(()=>{
         dispatch(getVideogames())
-        dispatch(getGenres());
+        dispatch(getGenres())
+        return ()=>{
+            dispatch (clearState())
+        }
     },[dispatch])
 
     // function handleClick(e) {
