@@ -13,7 +13,7 @@ function validate(videogame) {
     return error;
 }
 
-export default function SearchBar(){
+export default function SearchBar({setCurrentPage}){
     const dispatch = useDispatch()
     const [name, setName] = useState("")
     const [error, setError] =useState("")
@@ -21,9 +21,10 @@ export default function SearchBar(){
     function handlevideogameChange(e){
         e.preventDefault();
         setName(e.target.value)
+        setCurrentPage(1)
     }
 //console.log(name)
-    function handleSubmit(e){
+    const handleSubmit =(e)=>{
         e.preventDefault()
         if(name !== ""){
             dispatch(getVideogamesByName(name))
@@ -31,8 +32,6 @@ export default function SearchBar(){
         }
         setError(validate(name))       
     }
-
-
     return(
         <div className="flexbox">
             <div className="search">

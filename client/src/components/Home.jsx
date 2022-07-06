@@ -99,10 +99,10 @@ export default function Home() {
             </div>:
             <div className="allHome">
                 <div>
-                    <NavBar/>
+                    <NavBar setCurrentPage = {setCurrentPage}/>
                 </div>
             
-                <div class="filter-container">
+                <div className="filter-container">
                     <select className="custom-select" onChange={e =>  handleFilterByAlpha(e)} defaultValue= "Alphabetical order">
                         <option disabled={order}>Alphabetical order</option>
                         <option value='ASC'>A-Z</option>

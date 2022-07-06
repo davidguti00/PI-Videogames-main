@@ -4,7 +4,7 @@ import "./styles/Navbar.css";
 import SearchBar from "./SearchBar.jsx";
 
 
-export default function NavBar() {
+export default function NavBar({setCurrentPage}) {
 
 
     
@@ -20,8 +20,8 @@ export default function NavBar() {
                             <li><a href='/create'>Create Videogame</a></li>
                         </ul>
                         <form className="search-box">
-                        <div class="search-icon"><i class="fas fa-search"></i>
-                            <SearchBar/>
+                        <div className="search-icon"><i className="fas fa-search"></i>
+                            <SearchBar setCurrentPage={setCurrentPage} />
                         </div>
                     </form>
                     </div>
